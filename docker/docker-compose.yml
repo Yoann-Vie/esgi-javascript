@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+
+# ------> node ------>
+    node_1n8si1mjlxxi6sl:
+        container_name: node_1n8si1mjlxxi6sl
+        image: node:10.5-alpine
+        user: "node"
+        working_dir: /node
+        volumes:
+            - .././:/node
+        environment:
+            NODE_ENV: dev
+        expose:
+            - 8081
+# <------ node <------
