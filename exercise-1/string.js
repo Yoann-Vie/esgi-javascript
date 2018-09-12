@@ -54,8 +54,21 @@ function verlan(text) {
 function yoda(text) {
     return text.split(" ").reverse().join(" ");
 }
-function vig(text) {
-    // TODO
+function vig(text, key) {
+    key = key.toUpperCase();
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let letters = text.toUpperCase().split("");
+    let count = 0;
+    letters = letters.map((letter) => {
+        if (alphabet.includes(letter)) {
+            letter = String.fromCharCode((letter.charCodeAt(0) - 65 + key[count % key.length].charCodeAt(0) - 65) % 26 + 65);
+            count++;
+        }
+
+        return letter;
+    });
+
+    return letters.join("").toLowerCase();
 }
 
 // TESTS
@@ -75,3 +88,4 @@ console.log(prop_access(testObject, "animal.bateau.name"));
 console.log(leet("anaconda"));
 console.log(verlan("Hello world"));
 console.log(yoda("Hello world"));
+console.log(vig("wikipedia", "crypto"));
